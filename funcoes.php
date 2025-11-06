@@ -83,14 +83,13 @@
         $resultado_query = mysqli_query($conexao, $comando);
 
         $comando = "CREATE TABLE Usuario ( 
-                        idUsuario INT PRIMARY KEY,  
+                        idUsuario INT PRIMARY KEY AUTO_INCREMENT,  
                         Nome VARCHAR(255) NOT NULL,  
                         Salt INT NOT NULL,  
                         Senha_hash INT NOT NULL,  
                         Email VARCHAR(254) NOT NULL UNIQUE,  
                         CPF CHAR(11) NOT NULL UNIQUE,  
-                        Telefone CHAR(11),  
-                        idEndereco INT
+                        Telefone CHAR(11)
                     ); 
 
                     CREATE TABLE Endereco ( 
