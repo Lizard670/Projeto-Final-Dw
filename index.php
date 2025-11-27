@@ -1,4 +1,5 @@
 <?php
+    require 'backend/funcoes.php';
     // Código derivado do exemplo do próprio FastRoute
     require 'vendor/autoload.php';
 
@@ -34,7 +35,13 @@
             
             switch ($handler) {
                 case "get_tela_principal":
-                    require 'paginas/principal.php';
+                    if (checar_login()) {
+                        require 'paginas/principal.php';
+                        break;
+                    } else {
+                        header('Location: /login');
+                        exit();
+                    }
                     break;
                 case "get_tela_login":
                     require 'paginas/login.php';
@@ -43,8 +50,13 @@
                     require 'paginas/cadastro.php';
                     break;
                 case "get_tela_canal":
-                    require 'paginas/canal.php';
-                    break;
+                    if (checar_login()) {
+                        require 'paginas/canal.php';
+                        break;
+                    } else {
+                        header('Location: /login');
+                        exit();
+                    }
             }
     }
 ?>
